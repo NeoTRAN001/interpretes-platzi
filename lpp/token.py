@@ -45,7 +45,7 @@ class Token(NamedTuple):
     literal: str
 
     def __str__(self) -> str:
-        return f'Type: {self.token_type}, Literal: {self.literal}'
+        return f'\033[94m Type: \033[0m {self.token_type}, \033[92m Literal: \033[0m {self.literal}'
 
 def lookup_token_type(literal: str) -> TokenType:
     keywords: Dict[str, TokenType] = {
