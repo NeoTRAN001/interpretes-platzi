@@ -96,6 +96,24 @@ class LexerTest(TestCase):
 
         self.assertEquals(tokens, expected_tokens)
 
+    def test_assignment_variable_number(self) -> None:
+        source: str = 'variable edad_1 = 15;'
+        lexer: Lexer = Lexer(source)
+
+        tokens: List[Token] = []
+        for i in range(5):
+            tokens.append(lexer.next_token())
+
+        expected_tokens: List[Token] = [
+            Token(TokenType.LET, 'variable'),
+            Token(TokenType.IDENT, 'edad_1'),
+            Token(TokenType.ASSIGN, '='),
+            Token(TokenType.INT, '15'),
+            Token(TokenType.SEMICOLON, ';'),
+        ]
+
+        self.assertEquals(tokens, expected_tokens)
+
     def test_function_declaration(self) -> None:
         source: str = '''
             variable suma = procedimiento(x, y) {
